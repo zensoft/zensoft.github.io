@@ -1,0 +1,24 @@
+{
+  "name": "zensoft.github.io",
+  "version": "1.0.0",
+  "homepage": "https://github.com/zensoft/zensoft.github.io",
+  "authors": [
+    "tomek <tomek.wojnowski@o2.pl>"
+  ],
+  "description": "Nauka grunt + bower + requirejs + qunit",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "qunit": "~1.17.1"
+  }
+}
