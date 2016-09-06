@@ -26,6 +26,9 @@
     {% include footer.html %}
 
     <script src="{{ "/js/optimized.js" | prepend: site.baseurl }}"></script>
+    <script>
+      $("body").trigger("my_test_event");
+    </script>
   </body>
 
 </html>
