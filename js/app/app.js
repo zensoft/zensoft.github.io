@@ -1,4 +1,4 @@
-function getBreakpoint() {
+function fddfsdfsdfs() {
 	return "cos";
 }
 
