@@ -1,3 +1,8 @@
+function getBreakpoint() {
+	return;
+}
+
+
 define(['jquery','app/printer','app/calc'],function ($,Printer,Calc) {
 
     var calc = new Calc();
