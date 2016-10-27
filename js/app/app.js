@@ -1,4 +1,0 @@
-function fddfsdfsdfs() {
-	return "cos";
-}
-
