@@ -1,0 +1,15 @@
+---
+layout: home
+---
+<h2>
+  TOMEK ąłśżźć
+  {{ site.title}}
+</h2>
+<h1>
+{{ site.foo }}
+</h1>
+<ul>
+  {% for item in site.data.banners %}
+    <li>{{ item.name }}</li>
+  {% endfor %}
+</ul>

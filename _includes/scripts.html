@@ -1,0 +1,7 @@
+<script type="text/javascript">
+  var timestamp = {{ 'now' | date: "%s" }};
+  var chapters = {{ site.data.banners | jsonify }};
+  console.log(chapters);
+</script>
+<script src="/js/jquery.js?t={{ 'now' | date: "%s" }}" charset="utf-8"></script>
+<script src="/js/main.js?t={{ 'now' | date: "%s" }}" charset="utf-8"></script>
