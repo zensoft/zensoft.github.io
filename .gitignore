@@ -1,3 +1,3 @@
 _site
 .sass-cache
-js/node_modules
+.jekyll-metadata
