@@ -1,4 +1,6 @@
 <script type="text/javascript">
+var dataLayer = [];
+console.log(dataLayer);
   var timestamp = {{ 'now' | date: "%s" }};
   var chapters = {{ site.data.banners | jsonify }};
   console.log(chapters);
