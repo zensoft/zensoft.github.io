@@ -1,9 +1,72 @@
+
+<script src="/js/jquery.js?t={{ 'now' | date: "%s" }}" charset="utf-8"></script>
+<script src="/js/jquery.appear.js?t={{ 'now' | date: "%s" }}" charset="utf-8"></script>
+<script src="/js/main.js?t={{ 'now' | date: "%s" }}" charset="utf-8"></script>
+
 <script type="text/javascript">
-var dataLayer = [];
-console.log(dataLayer);
+  function AppearObservable(appearElementsSelector, gtmService) {
+
+    var that = this;
+    var observer = {};
+
+    //init
+    (function(){
+      that.observer = gtmService;
+      $(appearElementsSelector).appear({force_process:true});
+      $.force_appear();
+      $(document.body).on('appear', appearElementsSelector, function(event, $all_appeared_elements) {
+        if (that.observer.notify !== "undefined")
+          that.observer.notify($all_appeared_elements);
+      });
+    })();
+
+    this.setGtmService = function (gtmService) {
+      that.observer = gtmService;
+    }
+
+    return {
+      "setGtmService": that.setGtmService
+    };
+  }
+</script>
+
+<script type="text/javascript">
+  function GtmService() {
+    var that = this;
+    var sendedElements = {};
+
+    that.handleAppearElement = function(el) {
+      var elId = $(el).attr("id");
+      if (sendedElements.hasOwnProperty(elId)) { //element jest na "liscie"
+        console.log("SKIPPING " + elId);
+        $("#skipLogger").append($("<p/>",{text:"SKIPPING " + elId}));
+      } else {
+        sendedElements[elId] = "sended";
+        console.log("SENDING " + elId);
+        $("#logger").append($("<p/>",{text:"SENDING " + elId}));
+      }
+    };
+
+    that.notify = function(appearElements) {
+      $.each(appearElements, function(index, el){
+        that.handleAppearElement(el);
+      })
+    }
+
+    return {
+      "notify": that.notify
+    };
+  }
+</script>
+
+<script type="text/javascript">
+  var dataLayer = [];
   var timestamp = {{ 'now' | date: "%s" }};
   var chapters = {{ site.data.banners | jsonify }};
-  console.log(chapters);
+
+  var appearObservable = new AppearObservable(".card-title", {});
+  var gtmService = new GtmService();
+
+  appearObservable.setGtmService(gtmService);
+
 </script>
-<script src="/js/jquery.js?t={{ 'now' | date: "%s" }}" charset="utf-8"></script>
-<script src="/js/main.js?t={{ 'now' | date: "%s" }}" charset="utf-8"></script>
