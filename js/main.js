@@ -4,7 +4,7 @@ $("ul").on("click",function(){
   dataLayer.push({
     'event': 'promotionClick',
     'ecommerce': {
-      'promoClick': {
+      'promoView': {
         'promotions': [
          {
            'id': "aaa",                         // Name or ID is required.
@@ -22,7 +22,7 @@ $("ul").on("click",function(){
 
 });
 
-
+/*
 dataLayer.push({
   'ecommerce': {
     'currencyCode': 'EUR',                       // Local currency is optional.
@@ -48,4 +48,4 @@ dataLayer.push({
        'position': 2
      }]
   }
-});
+});*/

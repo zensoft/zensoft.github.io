@@ -38,12 +38,31 @@
     that.handleAppearElement = function(el) {
       var elId = $(el).attr("id");
       if (sendedElements.hasOwnProperty(elId)) { //element jest na "liscie"
-        console.log("SKIPPING " + elId);
+        //console.log("SKIPPING " + elId);
         $("#skipLogger").append($("<p/>",{text:"SKIPPING " + elId}));
       } else {
         sendedElements[elId] = "sended";
-        console.log("SENDING " + elId);
+        //console.log("SENDING " + elId);
         $("#logger").append($("<p/>",{text:"SENDING " + elId}));
+
+        dataLayer.push({
+          'event': 'promotionViewed',
+          'ecommerce': {
+            'promoView': {
+              'promotions': [
+               {
+                 'id': "testid " + elId,
+                 'name': " test name " + elId,
+                 'creative': " test creative "+ elId,
+                 'position': 999
+               }]
+            }
+          },
+          'eventCallback': function() {
+            console.log("sending ?? " + elId);
+          }
+        });
+
       }
     };
 
